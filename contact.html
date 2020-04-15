@@ -269,7 +269,20 @@ Bangalore - 560058.INDIA</address>
             	<div class="clearfix large_divider d-none d-md-block"></div>
                 <div class="clearfix medium_divider d-xl-none"></div>
             	<div class="field_form">
-                        <form method="post" name="enq">
+                     
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <!-- <form method="post" name="enq">
                         <div class="row">
                             <div class="form-group col-lg-6">
                                 <input required="required" placeholder="Enter Name *" id="first-name" class="form-control" name="name" type="text">
@@ -293,7 +306,62 @@ Bangalore - 560058.INDIA</address>
                                 <div id="alert-msg" class="alert-msg text-center"></div>
                             </div>
                         </div>
-                    </form>		
+                    </form>		 -->
+
+
+
+                    <form id="contact_form" method="post" action="mail/contact.php"  onsubmit="return validateForm()">
+                      <div class="row">
+                          <div class="form-group col-lg-6">
+                              <input required="required" placeholder="Enter Name *" id="name" class="form-control" name="name" type="text">
+                           </div>
+                          <div class="form-group col-lg-6">
+                              <input required="required" placeholder="Enter Email *" id="email" class="form-control" name="email" type="email">
+                          </div>
+                          <div class="form-group col-lg-6">
+                              <input required="required" placeholder="Enter Phone No. *" id="phone" class="form-control" name="phone" type="phone">
+                          </div>
+                          <div class="form-group col-lg-6">
+                              <input placeholder="Enter Subject" id="subject" class="form-control" name="subject" type="subject">
+                          </div>
+                          <div class="form-group col-lg-12">
+                              <textarea required="required" placeholder="Message *" id="comments" class="form-control" name="message" rows="4"></textarea>
+                          </div>
+
+
+                          <div class="g-recaptcha" data-sitekey="6LcrwekUAAAAAMJ0anqwqjPUEZ6rTlm_8Eme4ozb"></div>
+                          <p class="alert alert-danger" id="recaptcha-error" hidden>Please confirm, you are not a robot.</p>
+            
+
+
+                          <div class="col-lg-12">
+                              <button type="submit" id="submit" name="submit" title="Submit Your Message!" class="btn btn-default" value="Submit">Submit</button>
+                          </div>
+
+                          <div class="col-lg-12">
+                              <div id="alert-msg" class="alert-msg text-center"></div>
+                          </div>
+                      </div>
+                  </form>		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 <div class="map">
                 	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193229.77301255226!2d-74.05531241936525!3d40.823236500441624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f613438663b5%3A0xce20073c8862af08!2sW+123rd+St%2C+New+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1533565007513" frameborder="0" allowfullscreen></iframe>
@@ -420,6 +488,38 @@ Bangalore - 560058.INDIA</address>
 <!-- END FOOTER SECTION --> 
 
 <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a> 
+
+
+
+
+
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script>
+$(function(){
+
+if(localStorage.getItem('flag') ==1 ){
+  alert('message sent successfully!');
+  localStorage.setItem('flag',0);
+}
+})
+
+function validateForm()
+ {
+   var flag =1 ;
+   console.log('called'); 
+   var recaptcha = document.forms["contact_form"]["g-recaptcha-response"].value;
+   console.log(recaptcha,34)
+   if (recaptcha == "") {
+     
+    
+    $('#recaptcha-error').show();
+    return false;
+  }
+  localStorage.setItem('flag',1);
+}
+
+</script>
 
 <!-- Latest jQuery --> 
 <script src="assets/js/jquery-1.12.4.min.js"></script> 
